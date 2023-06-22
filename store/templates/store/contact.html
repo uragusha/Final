@@ -1,0 +1,172 @@
+{% extends 'store/main.html' %}
+{% load static %}
+{% block content %}
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+    <head>
+
+      <style>
+      body{
+      background-color: white;
+      }
+         .animate {
+      animation: myAnimation 1s ease-in-out;
+    }
+
+    @keyframes myAnimation {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.2); }
+      100% { transform: scale(1); }
+    }
+      .btn {
+        display: inline-block;
+        padding: 10px 20px;
+        text-decoration: none;
+        border-radius: 3px;
+        background-color:white;
+        color: #ff6600;
+        border-color: #ff6600;
+      }
+      .btn:hover{
+        background-color:#ff6600;
+        color: white;
+        border-color: #ff6600;
+      }
+
+
+
+      .btn{
+        background-color: white;
+       color: #ff6600;
+        border: solid;
+        border-color: #ff6600;
+      }
+      }
+
+      </style>
+      <style>
+        .dropbtn {
+          background-color: #ff6600;;
+          color: white;
+          padding: 16px;
+          font-size: 16px;
+          border: none;
+        }
+
+        .dropdown {
+          position: relative;
+          display: inline-block;
+        }
+
+        .dropdown-content {
+          display: none;
+          position: absolute;
+          background-color: #f1f1f1;
+          min-width: 160px;
+          box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+          z-index: 1;
+        }
+
+        .dropdown-content a {
+          color: black;
+          padding: 12px 16px;
+          text-decoration: none;
+          display: block;
+        }
+
+        .dropdown-content a:hover {background-color: #ddd;}
+
+        .dropdown:hover .dropdown-content {display: block;}
+
+        .dropdown:hover .dropbtn {background-color: white; color:#ff6600;; border: solid; border-color: #ff6600;}
+        </style>
+      </head>
+<body>
+
+    <section id="contact">
+        <div class="container">
+            <h1 class="text-center mt-4 mb-4" style ="color: #ff6600;" id="animated-element">Contact</h1>
+            <div class="row justify-content-center">
+              <div class="col-md-6">
+                <form>
+                  <div class="form-group" style ="color: #ff6600;" >
+                    <label for="inputName" >Name</label>
+                    <input type="text" class="form-control" id="inputName" required>
+                  </div>
+                  <div class="form-group" style ="color: #ff6600;" >
+                    <label for="title">Title</label>
+                    <div class="form-radio-group">
+                      <label>
+                        <input type="radio" name="title" value="mr">
+                        Mr.
+                      </label>
+                      <label>
+                        <input type="radio" name="title" value="ms">
+                        Ms.
+                      </label>
+                      <label>
+                        <input type="radio" name="title" value="mrs">
+                        Mrs.
+                      </label>
+                    </div>
+                    <small class="text-danger" id="title-error"></small>
+                  </div>
+                  <div class="dropdown">
+                    <button class="dropbtn">Product's company</button>
+                    <div class="dropdown-content">
+                      <a href="https://www.nike.com/">Nike</a>
+                      <a href="https://adidas.kz/">Adidas</a>
+                      <a href="https://us.puma.com/us/en">Puma</a>
+                    </div>
+                  </div>
+
+                  <div class="form-group" style ="color: #ff6600;" >
+                    <label for="email">Email</label>
+                    <input type="email" class="form-control" id="email" name="email" required>
+                    <small id="email-error" class="form-text text-danger"></small>
+                  </div>
+                  <div class="form-group" style ="color: #ff6600;" >
+                    <label for="phone">Phone</label>
+                    <input type="tel" class="form-control" id="phone" name="phone" pattern="[8]{1}[0-9]{9}" required>
+                    <small id="phone-error" class="form-text text-danger"></small>
+                  </div>
+                  <div class="form-group" style ="color: #ff6600;" >
+                    <label for="inputSubject">Subject</label>
+                    <input type="text" class="form-control" id="inputSubject" required>
+                  </div>
+                  <label for="calendar" style ="color: #ff6600;" >Select a Date:</label>
+                  <input type="date" id="calendar" name="calendar">
+
+
+                  <div class="form-group" style ="color: #ff6600;" >
+                    <label for="inputMessage">Message</label>
+                    <textarea class="form-control" id="inputMessage" rows="5" required></textarea>
+                  </div>
+                  <button type="submit" class="btn btn-primary" id="animate-button" style ="color: #ff6600;" >Send Message</button>
+                </form>
+              </div>
+            </div>
+          </div>
+      </section>
+
+
+      <script>const animateButton = document.getElementById('animate-button');
+        animateButton.addEventListener('click', () => {
+          const element = document.getElementById('animated-element');
+          element.classList.add('animate');
+          setTimeout(() => {
+            element.classList.remove('animate');
+          }, 500000);
+        });
+
+        const calendarInput = document.getElementById('calendar');
+const today = new Date().toISOString().split('T')[0];
+calendarInput.setAttribute('min', today);
+
+
+
+        </script>
+</body>
+</html>
+{% endblock content %}
